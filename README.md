@@ -44,4 +44,7 @@ A: Cuz the front-end ajax request is to http://localhost:5000. Do u wanna custom
 Q: is there a compleate version? I mean the server that ready to use with CURD  
 A: Ahhhh, lazy man. Yeah, i put it on `./src/done`. Just move it out  
 
+Q: WHERE IS THE TAGS?  
+A: Hah? Oh, tags. Yeah. Oohh...... I forget it. Not necessary, the important thing is CRUD. KONOOOO DIODAAAAAAAAAAAAAAAAAAAAAAAA (Zener).
+
 _eaze peazy_
