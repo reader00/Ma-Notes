@@ -36,7 +36,7 @@ Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-
 
 ### Why?
 Q: Why the notes disappear after the server reloaded?  
-A: Cuz it temporary, I dont using file stream (U can make it by ur self, haha).  
+A: Cuz it temporary, I dont using file stream. Even the one that served by dicoding, it also temporary. (U can make it by ur self, haha).
 
 Q: Why the server must run in localhost in port 5000?  
 A: Cuz the front-end ajax request is to http://localhost:5000. Do u wanna customize it? Go on, I'm not expert in configuring (yet, maybe).  
