@@ -12,10 +12,12 @@ Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-
 
     * @hapi/hapi
     * @hapi/inert
+    * nanoid
     * nodemon (_opional_)
     * eslint (_optional_)
     * eslint-config-google (_optional_)
     * @types/node (_optional_)
+
 2. **Config** server 
     ```
     {
@@ -26,6 +28,10 @@ Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-
 3. **Run**
     ```
     npm run start
+    ```
+    If you do not install nodemon, change **nodemon** to **node** at script in `package.json`
+    ```
+    "start": "node ./src/server.js"
     ```
 
 ### Why?
