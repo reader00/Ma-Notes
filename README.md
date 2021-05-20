@@ -29,13 +29,13 @@ Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-
     ```
 
 ### Why?
-Q: Why the notes disappear after the server reloaded?\
-A: Cuz it temporary, I dont using file stream (U can make it by ur self, haha).\
+Q: Why the notes disappear after the server reloaded?  
+A: Cuz it temporary, I dont using file stream (U can make it by ur self, haha).  
 
-Q: Why the server must run in localhost in port 5000?\
-A: Cuz the front-end ajax request is to http://localhost:5000. Do u wanna customize it? Go on, I'm not expert in configuring (yet, maybe).]
+Q: Why the server must run in localhost in port 5000?  
+A: Cuz the front-end ajax request is to http://localhost:5000. Do u wanna customize it? Go on, I'm not expert in configuring (yet, maybe).  
 
-Q: is there a compleate version? I mean the server is ready to use with CURD\
-A: Ahhhh, lazy man. Yeah, i put it on `./src/done`. Just move it out\
+Q: is there a compleate version? I mean the server is ready to use with CURD  
+A: Ahhhh, lazy man. Yeah, i put it on `./src/done`. Just move it out  
 
 _eaze peazy_
