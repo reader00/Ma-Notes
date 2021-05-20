@@ -1,10 +1,10 @@
 # Ma-Notes
-### What?
-***
-Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-End untuk Pemula" by dicoding.com (I made it cuz the one served by the dicoding was error)
+
+## What?
+Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-End untuk Pemula" by [dicoding.com](https://www.dicoding.com/academies/261) (I made it cuz the one served by the dicoding was error)
 **Please read QNA below**
-### How?
-***
+
+## How?
 1. **Install** all dependencies
     ```
     npm i
@@ -27,8 +27,8 @@ Custom Front-End for module Restful API in class "Belajar Membuat Aplikasi Back-
     ```
     npm run start
     ```
+
 ### Why?
-***
 Q: Why the notes disappear after the server reloaded?
 A: Cuz it temporary, I dont using file stream (U can make it by ur self, haha).
 
