@@ -1,0 +1,64 @@
+<div class="container ml-3">
+    <form id="form-note">
+        <input type="hidden" name="id" id="note-id">
+        <div id="lastUpdated"></div>
+        <input type="text" name="title" id="input-title" class="bold" placeholder="My notes title" required>
+        <br>
+        <textarea name="body" id="input-body" class="mt-2" placeholder="Hai, im r.eader" required></textarea>
+        <div class="w-100 mt-2">
+            <button type="submit" class="center" id="btn-submit-form-note">Simpan</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        let id = $('#container-id').attr('data-id');
+        if (id !== '') {
+            $.ajax({
+                type: "GET",
+                url: `http://localhost:5000/notes/${id}`
+            }).done((msg) => {
+                const note = msg.data.note;
+                $('#input-title').val(note.title);
+                $('#input-body').val(note.body);
+                $('#note-id').val(note.id);
+                $('#lastUpdated').html(new Date(note.updatedAt).toLocaleDateString('id'));
+            })
+        }
+
+        $("#form-note").submit(function () {
+            event.preventDefault();
+            let id = $("#note-id").val();
+            const data = $(this).serialize();
+
+            if (id === '') {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:5000/notes",
+                    data
+                }).done((msg) => {
+                    if (msg.status == 'success') {
+                        alert("Yeayyyyy. Kongret. Yur not seyved");
+                        $('#cancel-add-note').trigger('click');
+                    } else {
+                        alert('T_T Something wrong, I can feel it')
+                    }
+                })
+            } else {
+                $.ajax({
+                    type: "PUT",
+                    url: `http://localhost:5000/notes/${id}`,
+                    data
+                }).done((msg) => {
+                    if (msg.status == 'success') {
+                        alert("Yeayyyyy. Kongret. Yur not seyved");
+                        $('#cancel-add-note').trigger('click');
+                    } else {
+                        alert('T_T Something wrong, I can feel it')
+                    }
+                })
+            }
+        })
+    })
+</script>

@@ -1,0 +1,267 @@
+<!--
+* Front End untuk modul RestAPI kelas Belajar Dasar Pemrograman JavaScript di dicoding.com
+* @version v1
+* @link https://github.com/reader00/dicoding-front-end-notes
+* Pake bae jok. Punyo kito
+* @author r.eader
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Front End untuk modul RestAPI pada kelas Belajar Dasar Pemrograman JavaScript di dicoding.com">
+        <meta name="author" content="r.eader">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?&family=KoHo:wght@200;600;700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/hamzasaleem/stock/48/Notes-icon.png"
+            type="image/x-icon">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <title>Ma Notes</title>
+        <style>
+            * {
+                font-family: 'KoHo', sans-serif;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            #title {
+                font-size: 3em;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
+            .text-right {
+                text-align: right;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+
+            .container {
+                width: 100%;
+                margin: 20px;
+            }
+
+            .card {
+                position: relative;
+                bottom: 0;
+                width: 300px;
+                padding: 30px;
+                margin: 20px;
+                border: 1px solid #aaa;
+                border-radius: 20px;
+                box-shadow: 3px 3px 6px #ccc;
+                background-color: rgb(250, 250, 250);
+                transition: all .2s ease-in-out;
+            }
+
+            .card:hover {
+                position: relative;
+                bottom: 10px;
+                color: white;
+                background-color: #444;
+                transition: all .2s ease-in-out;
+            }
+
+            .pointer:hover {
+                cursor: pointer;
+            }
+
+            .card:hover .action {
+                display: inline;
+            }
+
+            .d-flex {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: stretch;
+                flex-wrap: wrap;
+            }
+
+            .action {
+                display: none;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+
+            .bolder {
+                font-weight: 500;
+            }
+
+            .center {
+                margin: 0 auto;
+            }
+
+            .collapse {
+                height: 0px;
+            }
+
+            .show {
+                height: auto;
+            }
+
+            .w-100 {
+                display: table;
+                width: 100%;
+            }
+
+            .delete-button {
+                border: #aaa;
+                border-radius: 10px;
+                background-color: rgb(255, 64, 64);
+                padding: 1px 5px;
+                color: white;
+                font-weight: bold;
+                transition: background-color .2s ease-in-out;
+            }
+
+            .delete-button:hover {
+                background-color: rgb(201, 0, 0);
+                cursor: pointer;
+                transition: background-color .2s ease-in-out;
+            }
+
+            .edit-button {
+                border: #aaa;
+                border-radius: 10px;
+                background-color: rgb(28, 202, 28);
+                padding: 1px 5px;
+                color: white;
+                font-weight: bold;
+            }
+
+            .no-dec {
+                text-decoration: none;
+                color: black;
+            }
+
+            #input-title {
+                font-size: 2.5em;
+                border: none;
+                /* height: 1rem; */
+            }
+
+            #input-title:focus,
+            #input-body:focus {
+                outline: none;
+            }
+
+            #input-body {
+                font-size: 1.5em;
+                border: none;
+                width: 80%;
+                min-height: 40vh;
+            }
+
+            .mt-2 {
+                margin-top: 2em;
+            }
+
+            .mt-5 {
+                margin-top: 5em;
+            }
+
+            .ml-3 {
+                margin-left: 3em;
+            }
+
+            #btn-submit-form-note {
+                border-radius: 10px;
+                background-color: chocolate;
+                border: 1px solid rgb(207, 91, 8);
+                color: white;
+                font-weight: bold;
+                padding: 5px;
+                font-size: 1.1em;
+                transition: background-color 0.2s ease-in-out;
+            }
+
+            #btn-submit-form-note:hover {
+                background-color: rgb(161, 69, 4);
+                cursor: pointer;
+                transition: background-color 0.2s ease-in-out;
+            }
+
+            .no-data {
+                background-color: chocolate;
+                border: 1px solid rgb(207, 91, 8);
+                color: white;
+                border-radius: 10px;
+                padding: 3px 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 class="text-center bold" id="title">Ma Notes <span id="add-container"><span id="add-note"><a class="no-dec"
+                        href="#">&plus;</a></span></span></h1>
+        <div id="container-id" data-id=""></div>
+        <div id="main-content">
+            <!-- MAIN CONTENT -->
+        </div>
+    </body>
+    <script>
+        $(document).ready(() => {
+            const loadList = () => {
+                $('#main-content').load('http://localhost:5000/list')
+                $('#add-container').html(`<span id="add-note"><a class="no-dec" href="#">&plus;</a></span>`)
+            }
+
+            const loadAdd = () => {
+                $('#main-content').load('http://localhost:5000/add')
+                $('#add-container').html(`<span id="cancel-add-note"><a class="no-dec" href="#">&minus;</a></span>`)
+            }
+
+            $('#main-content').load('http://localhost:5000/list');
+
+            $('body').on('click', '#add-note', () => {
+                $('#container-id').attr('data-id', '');
+                loadAdd();
+            })
+
+            $('body').on('click', '#cancel-add-note', () => {
+                $('#container-id').attr('data-id', '');
+                loadList();
+            })
+
+            $('#main-content').on('click', '.detail', function () {
+                event.preventDefault();
+                const id = $(this).data('id');
+                $('#container-id').attr('data-id', id);
+                loadAdd();
+            })
+
+            $('#main-content').on('click', '.delete-button', function () {
+                event.preventDefault();
+                let id = $(this).attr('data-id');
+                if (confirm('Ar yu syur tu dilet dis not?')) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: `http://localhost:5000/notes/${id}`
+                    }).done((msg) => {
+                        if (msg.status !== 'success') {
+                            alert('Something wrong, I can feel it');
+                        }
+                        $('#container-id').attr('data-id', '');
+                        loadList();
+                    });
+                }
+            })
+        })
+    </script>
+
+</html>

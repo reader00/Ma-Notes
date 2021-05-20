@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="d-flex" id="container-notes">
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:5000/notes"
+        }).done((msg) => {
+            const res = msg;
+            console.log(res);
+
+            let contents = "";
+
+            if (res.data.notes.length > 0) {
+                res.data.notes.forEach(e => {
+                    let body = e.body.replace(/(?:\r\n|\r|\n)/g, '<br>')
+                    body = body.length > 128 ? body.substring(0, 128) + "....." : body;
+
+                    contents += `
+                    <div class="card">
+                        <div class="action">
+                            <button class="delete-button" data-id="${e.id}">delete</button>
+                        </div>
+                        <h3 class="pointer detail" data-id="${e.id}">${e.title}</h3>
+                        <p class="bolder pointer detail" data-id="${e.id}">${body}</p>
+                        <div class="text-right">
+                            <small>${new Date(e.updatedAt).toLocaleDateString("id")}</small>
+                        </div>
+                    </div>`;
+                });
+            } else {
+                contents = `
+                <div>
+                    <h3 class="mt-5"><span class="no-data">Deris no data hir!!!</span> Ed not yuzing the <span class="bold">&plus;</span> ba'en in taitel</h3>
+                </div>
+                `
+            }
+
+            $("#container-notes").html(contents);
+        })
+    });
+</script>
