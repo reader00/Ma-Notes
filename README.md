@@ -49,5 +49,3 @@ A: Ahhhh, lazy man. Yeah, i put it on `./src/done`. Just move it out
 
 Q: WHERE IS THE TAGS?  
 A: Hah? Oh, tags. Yeah. Oohh...... I forget it. Not necessary, the important thing is CRUD. KONOOOO DIODAAAAAAAAAAAAAAAAAAAAAAAA (Zener).
-
-_eaze peazy_
