@@ -32,7 +32,7 @@ const routes = [
     },
     {
         method: '*',
-        path: '/*',
+        path: '/{any*}',
         handler: notFoundHandler,
     },
     {
